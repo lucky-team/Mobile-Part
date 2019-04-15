@@ -19,6 +19,8 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'Claim.dart';
 import 'login.dart';
 import 'colors.dart';
+import 'MainPage.dart';
+import 'Insurances.dart';
 
 
 
@@ -82,7 +84,8 @@ ThemeData _buildShrineTheme(){
     //accentTextTheme: _buildShrineTextTheme(base.accentTextTheme),
     // TODO: Add the icon themes (103)
     primaryIconTheme: base.iconTheme.copyWith(
-      color: kShrineBrown900
+      // color: kShrineBrown900
+      color: Colors.white
     ),
     // TODO: Decorate the inputs (103)
     inputDecorationTheme: InputDecorationTheme(

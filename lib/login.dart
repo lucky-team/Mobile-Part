@@ -14,6 +14,8 @@
 
 import 'package:Shrine/Claim.dart';
 import 'package:Shrine/Insurances.dart';
+import 'package:Shrine/MainPage.dart';
+
 import 'package:flutter/material.dart';
 import 'apiRequest.dart';
 import 'dart:io';
@@ -87,14 +89,15 @@ class _LoginPageState extends State<LoginPage> {
                     borderRadius: BorderRadius.all(Radius.circular(4.0)),
                   ),
                   onPressed: () async {
-                    String re = await apiRequest('http://59.110.243.55/users/login',{'username': '$uname','password': '$pswd'},'');
+                    String re = await apiRequest('http://59.110.243.55:3000/users/login',{'username': '$uname','password': '$pswd'},'');
+                    //print(re);
                     Map map0 = jsonDecode(re);
                     //map0.forEach(f)
                     //assert(map0['success']);
                     if(map0['success']==true){
                       token0 = map0['token'];
                       Navigator.push(context,MaterialPageRoute(
-                        builder: (context) => InsurancePage()
+                        builder: (context) => MainPage()
                       ));
                     }
                     else{
@@ -206,20 +209,7 @@ class _SignupState extends State<Signup> {
                 spswd = value;
               },
             ),
-            // SizedBox(height: 12.0,),
-            // TextField(
-            //   controller: _spasswordController,
-            //   decoration: InputDecoration(
-            //     labelText: 'Repeat Password',
-            //   ),
-            //   obscureText: true, 
-            //   onChanged: (value){
-            //     spswd2 = value;
-            //     if(spswd2!=spswd){
 
-            //     }
-            //   },
-            // ),
             ButtonBar(
               children: <Widget>[
                 RaisedButton(
@@ -242,7 +232,7 @@ class _SignupState extends State<Signup> {
                   ),
                   onPressed: () async {
                     if(suname!=null && spswd!=null) {
-                    String re2 = await apiRequest('http://59.110.243.55/users/signup',{'username': '$suname','password': '$spswd'},'');
+                    String re2 = await apiRequest('http://59.110.243.55:3000/users/signup',{'username': '$suname','password': '$spswd'},'');
                     Map map2 = jsonDecode(re2);
                     //map0.forEach(f)
                     //assert(map0['success']);

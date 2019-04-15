@@ -20,6 +20,8 @@ import 'package:flutter/rendering.dart';
 import 'Claim_class.dart';
 import 'apiRequest.dart';
 import 'dart:io';
+import 'Insurances.dart';
+import 'login.dart';
 
 void main() => runApp(ClaimPage());
 
@@ -100,12 +102,15 @@ class ClaimPageState extends State<ClaimPage> {
             padding: EdgeInsets.fromLTRB(0.0, 20.0, 0.0, 0.0),
         ),
           TextField(
-            keyboardType: TextInputType.number,
+            keyboardType: TextInputType.text,
+            
             decoration: InputDecoration(
+              hintText: 'You can claim for this insurance or other one.',
+              // prefixText: claimedID,
               contentPadding: EdgeInsets.all(10.0),
               icon: Icon(Icons.code),
               labelText: 'Policy Id:',
-              helperText: '',
+              helperText: claimedID,
             ),
             onChanged: (value){
               policyid = value;
@@ -113,7 +118,7 @@ class ClaimPageState extends State<ClaimPage> {
             autofocus: false,
           ),
           TextField(
-            keyboardType: TextInputType.number,
+            keyboardType: TextInputType.text,
             decoration: InputDecoration(
               contentPadding: EdgeInsets.all(10.0),
               icon: Icon(Icons.place),
@@ -556,8 +561,19 @@ class ConfirmPageState extends State<ConfirmPage> {
 
   }
 
+  Map claimingM = {
+    'type': 1,
+    'location':aloca,
+    'date':_dateTime,
+    'amount':double.parse(amt),
+    'reason':'qweasdzxcqweasdzxc',
+    'file_a':lof0,
+    'insurance':policyid,
+  };
+  
+
   void _submitClaim() {
-      //print(apiRequest('http', new Claim(policyid, aloca, _dateTime, double.parse(amt), lof0, DateTime(2019), DateTime(2019)).toJson()));
+      //  print(apiRequest('http', claimingM,token0);
         // flutter defined function
       showDialog(
           context: context,
@@ -578,7 +594,7 @@ class ConfirmPageState extends State<ConfirmPage> {
             );
           },
         );
-
+      
   }
 
 }
